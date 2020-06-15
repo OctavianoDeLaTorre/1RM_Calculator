@@ -4,29 +4,51 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaviano.rm.R
+import com.octaviano.rm.adapter.RmAdapter
+import com.octaviano.rm.model.RmPorcentage
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class SecondFragment : Fragment() {
 
+    private lateinit var rmAdapter: RmAdapter
+
+
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        val root = inflater.inflate(R.layout.fragment_second, container, false)
+
+        val recyclerView = root.findViewById<RecyclerView>(R.id.recycleView)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        val list = ArrayList<RmPorcentage>()
+
+        list.add(RmPorcentage("100 %", "100 kg"))
+        list.add(RmPorcentage("90 %", "90 kg"))
+
+        rmAdapter = RmAdapter(list)
+
+        recyclerView.adapter = rmAdapter
+
+        configViews(root)
+
+        return root
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        view.findViewById<Button>(R.id.button_second).setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+    private fun configViews(root: View?) {
+        val fab = (activity?.findViewById<FloatingActionButton>(R.id.fab))?.apply {
+            hide()
         }
     }
+
 }

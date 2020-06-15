@@ -10,9 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaviano.rm.R
 import com.octaviano.rm.util.Units
@@ -25,6 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
 
     private lateinit var fab: FloatingActionButton
+    private lateinit var lblSubmaximal: TextView
 
     private var sharedPref: SharedPreferences? = null
     private var isFirstInit: Boolean? = null
@@ -54,6 +57,12 @@ class HomeFragment : Fragment() {
             )
         }
 
+        lblSubmaximal = root.findViewById(R.id.lblSubmaximal)
+        lblSubmaximal.setOnClickListener {
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+                .navigate(R.id.SecondFragment)
+        }
+
         homeViewModel.rm.observe(viewLifecycleOwner, Observer {
             lblRM.text = String.format("%.2f", it)
         })
@@ -67,8 +76,7 @@ class HomeFragment : Fragment() {
             when (it) {
                 true -> {
                     createWelcomeDialog()
-
-                    sharedPref?.edit()?.putBoolean(FISRT_INIT_KEY, true)?.apply()
+                    sharedPref?.edit()?.putBoolean(FISRT_INIT_KEY, false)?.apply()
                 }
 
                 false -> return

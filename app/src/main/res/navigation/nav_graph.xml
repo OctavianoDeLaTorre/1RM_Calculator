@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/HometFragment"
-        android:name="com.octaviano.rm.FirstFragment"
+        android:name="com.octaviano.rm.HomeFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_homet">
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -65,26 +65,36 @@
         app:layout_constraintBottom_toBottomOf="@+id/lblRM"
         app:layout_constraintStart_toEndOf="@+id/lblRM" />
 
-    <TextView
+    <EditText
         android:id="@+id/lblWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorSecondary"
         android:fontFamily="@font/roboto_medium"
-        android:text="0"
+        android:gravity="end"
+        android:hint="0"
+        android:inputType="numberDecimal"
         android:textColor="@color/colorSecondary"
+        android:textColorHint="@color/colorSecondary"
+        android:textCursorDrawable="@drawable/curso_custom_color"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/lblReps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:backgroundTint="@color/colorSecondary"
         android:fontFamily="@font/roboto_medium"
-        android:text="0"
+        android:gravity="end"
+        android:hint="0"
+        android:inputType="number"
         android:textColor="@color/colorSecondary"
+        android:textColorHint="@color/colorSecondary"
+        android:textCursorDrawable="@drawable/curso_custom_color"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,4 @@
-package com.octaviano.rm
+package com.octaviano.rm.ui.home
 
 import android.app.Dialog
 import android.content.Context
@@ -11,6 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.octaviano.rm.R
 import com.octaviano.rm.util.Units
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -18,7 +22,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class HomeFragment : Fragment() {
+    private lateinit var homeViewModel: HomeViewModel
 
+    private lateinit var fab: FloatingActionButton
 
     private var sharedPref: SharedPreferences? = null
     private var isFirstInit: Boolean? = null
@@ -28,12 +34,29 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
+        configViews(root)
         showWelcomeDialog()
 
         return root
+    }
+
+    private fun configViews(root: View) {
+
+        fab = activity?.findViewById(R.id.fab)!!
+        fab.setOnClickListener {
+            homeViewModel.calculateRM(
+                lblReps.text.toString().toInt(),
+                lblWeight.text.toString().toDouble()
+            )
+        }
+
+        homeViewModel.rm.observe(viewLifecycleOwner, Observer {
+            lblRM.text = String.format("%.2f", it)
+        })
     }
 
     private fun showWelcomeDialog() {

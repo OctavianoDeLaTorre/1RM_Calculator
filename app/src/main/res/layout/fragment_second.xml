@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary"
-    tools:context=".ui.SecondFragment">
+    tools:context=".ui.submaxima.SubmaximaFragment">
 
     <TextView
         android:id="@+id/textView8"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/lblSubRm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -35,15 +35,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/lblSubUnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:text="KG"
         android:textColor="@color/colorSecondaryLight"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toTopOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/lblSubRm"
+        app:layout_constraintTop_toTopOf="@+id/lblSubRm" />
 
     <TextView
         android:id="@+id/textView12"
@@ -56,7 +56,7 @@
         android:textColor="@color/colorSecondaryLight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/lblSubRm" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"

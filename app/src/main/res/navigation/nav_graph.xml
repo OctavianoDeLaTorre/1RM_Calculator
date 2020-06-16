@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.octaviano.rm.ui.SecondFragment"
+        android:name="com.octaviano.rm.ui.submaxima.SubmaximaFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second" />
 </navigation>

@@ -38,13 +38,22 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         configViews(root)
+        initSharePrefernces()
         showWelcomeDialog()
 
         return root
+    }
+
+
+    private fun initSharePrefernces() {
+        sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+    }
+
+    private fun setUnit(unit: String) {
+        sharedPref?.edit()?.putString(FISRT_INIT_KEY, unit)?.commit()
     }
 
     private fun configViews(root: View) {
@@ -69,19 +78,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun showWelcomeDialog() {
-        sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
-        isFirstInit = sharedPref?.getBoolean(FISRT_INIT_KEY, true)
-
-        isFirstInit?.let {
-            when (it) {
-                true -> {
-                    createWelcomeDialog()
-                    sharedPref?.edit()?.putBoolean(FISRT_INIT_KEY, false)?.apply()
-                }
-
-                false -> return
+        sharedPref?.getBoolean(FISRT_INIT_KEY, true)?.let {
+            if (it) {
+                createWelcomeDialog()
+                sharedPref?.edit()?.putBoolean(FISRT_INIT_KEY, false)?.commit()
             }
         }
+
     }
 
     private fun createWelcomeDialog() {
@@ -100,12 +103,14 @@ class HomeFragment : Fragment() {
                 (findViewById<Button>(R.id.rbKilos)).run {
                     setOnClickListener {
                         updateWeightUnitLabels(Units.KG)
+                        setUnit(Units.KG.toString())
                     }
                 }
 
                 (findViewById<Button>(R.id.rbPounds)).run {
                     setOnClickListener {
                         updateWeightUnitLabels(Units.LIB)
+                        setUnit(Units.LIB.toString())
                     }
                 }
 
@@ -119,4 +124,12 @@ class HomeFragment : Fragment() {
         lblUnit2.text = unit.toString()
     }
 
+    override fun onResume() {
+        super.onResume()
+        fab.show()
+    }
+
+    companion object {
+        const val UNIT_KEY = "UNIT"
+    }
 }

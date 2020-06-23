@@ -8,12 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaviano.rm.R
 import com.octaviano.rm.adapter.RmAdapter
-import com.octaviano.rm.model.RmPorcentage
 import com.octaviano.rm.ui.home.HomeFragment
 import com.octaviano.rm.util.Units
 
@@ -22,6 +23,8 @@ import com.octaviano.rm.util.Units
  */
 class SubmaximaFragment : Fragment() {
 
+    private lateinit var viewModelSubmaxima: ViewModelSubmaxima
+
     private lateinit var rmAdapter: RmAdapter
 
     private lateinit var recyclerView: RecyclerView
@@ -29,6 +32,7 @@ class SubmaximaFragment : Fragment() {
     private lateinit var lblSubUnit: TextView
 
     private var sharedPref: SharedPreferences? = null
+    private lateinit var unit: String
 
 
     override fun onCreateView(
@@ -36,21 +40,43 @@ class SubmaximaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        viewModelSubmaxima = ViewModelProvider(this).get(ViewModelSubmaxima::class.java)
         val root = inflater.inflate(R.layout.fragment_second, container, false)
 
-
-
-        initViews(root)
-        configRecycleView()
         initSharePrefernces()
+        getUnits()
+        initViews(root)
+        getRM()
+        configRecycleView()
         updateLabelUnits()
         hiddenFloatinActionButton()
+        addObserverToRecycleVie()
 
         return root
     }
 
+    private fun getUnits() {
+        unit = sharedPref?.getString(HomeFragment.UNIT_KEY, Units.KG.toString()).toString()
+    }
+
+    private fun getRM() {
+        val rm = arguments?.getDouble(HomeFragment.RM_KEY, 0.0)
+        rm?.let {
+            lblSubRm.text = "${String.format("%.2f", it)}"
+            viewModelSubmaxima.calculateSubmaximas(it, unit)
+        }
+    }
+
+    private fun addObserverToRecycleVie() {
+        viewModelSubmaxima.rmSubmaxima.observe(viewLifecycleOwner, Observer {
+            rmAdapter = RmAdapter(it)
+            recyclerView.adapter = rmAdapter
+        })
+    }
+
     private fun initSharePrefernces() {
         sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+
     }
 
     private fun updateLabelUnits() {
@@ -67,15 +93,6 @@ class SubmaximaFragment : Fragment() {
 
     private fun configRecycleView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
-
-        val list = ArrayList<RmPorcentage>()
-
-        list.add(RmPorcentage("100 %", "100 kg"))
-        list.add(RmPorcentage("90 %", "90 kg"))
-
-        rmAdapter = RmAdapter(list)
-
-        recyclerView.adapter = rmAdapter
     }
 
     private fun hiddenFloatinActionButton() {

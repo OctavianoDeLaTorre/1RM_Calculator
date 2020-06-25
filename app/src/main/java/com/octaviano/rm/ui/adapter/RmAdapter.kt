@@ -1,4 +1,4 @@
-package com.octaviano.rm.adapter
+package com.octaviano.rm.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

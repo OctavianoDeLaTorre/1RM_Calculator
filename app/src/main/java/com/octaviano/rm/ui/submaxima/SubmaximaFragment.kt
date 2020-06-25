@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.octaviano.rm.R
-import com.octaviano.rm.adapter.RmAdapter
+import com.octaviano.rm.ui.adapter.RmAdapter
 import com.octaviano.rm.ui.home.HomeFragment
 import com.octaviano.rm.util.Units
 

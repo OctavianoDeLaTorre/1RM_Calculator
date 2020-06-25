@@ -1,4 +1,4 @@
-package com.octaviano.rm
+package com.octaviano.rm.ui
 
 import android.app.Dialog
 import android.content.Context
@@ -11,6 +11,7 @@ import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.octaviano.rm.R
 import com.octaviano.rm.ui.home.HomeFragment
 import com.octaviano.rm.util.Units
 

@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
             if (lblReps.text.isNullOrBlank() || lblWeight.text.isNullOrBlank()) {
                 Toast.makeText(
                     context,
-                    "Debes ingresar el numero de repeticiones y el peso levantado ",
+                    getString(R.string.debes_ingresar_reps),
                     Toast.LENGTH_LONG
                 ).show()
             } else {
@@ -87,7 +87,7 @@ class HomeFragment : Fragment() {
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
                     .navigate(R.id.SecondFragment, bundle)
             } else {
-                Toast.makeText(context, "Primero debes calcular tu 1 RM !!! ", Toast.LENGTH_LONG)
+                Toast.makeText(context, getString(R.string.debes_calcular_rm), Toast.LENGTH_LONG)
                     .show()
             }
         }

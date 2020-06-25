@@ -42,14 +42,12 @@ class HomeFragment : Fragment() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-
         initSharePrefernces()
         configViews(root)
         showWelcomeDialog()
 
         return root
     }
-
 
     private fun initSharePrefernces() {
         sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)

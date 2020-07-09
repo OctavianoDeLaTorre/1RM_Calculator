@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/HometFragment"
         android:name="com.octaviano.rm.ui.home.HomeFragment"
-        android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_HometFragment_to_SecondFragment"
@@ -17,6 +16,5 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.octaviano.rm.ui.submaxima.SubmaximaFragment"
-        android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second" />
 </navigation>

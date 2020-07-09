@@ -1,27 +1,19 @@
 <resources>
     <string name="app_name">1 RM Calculator</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="submaximas"><u>Mostrar Submaximas</u></string>
     <string name="action_about">About</string>
     <string name="version">Version: 1.0</string>
-    <string name="description_app">Calcula tu repeticion maxima de manera sencilla y rapida.</string>
+    <string name="description_app">Calcula tu repetición máxima de manera sencilla y rápida.</string>
     <string name="by_octaviano_de_la_torre">by: Octaviano De La Torre</string>
     <string name="ok">Aceptar</string>
     <string name="peso_levantado">Peso levantado</string>
-    <string name="numero_de_repeticines">Numero de repeticines</string>
-    <string name="repeticion_maxima">Repeticion Maxima</string>
-    <string name="tu_repeticion_maxima">Tu repeticion maxima</string>
-    <string name="porcentages_de_rm">% Porcentages de repetición máxima</string>
-    <string name="configuracion">Configuracion</string>
+    <string name="numero_de_repeticines">Número de repeticiones</string>
+    <string name="repeticion_maxima">Repetición Máxima</string>
+    <string name="tu_repeticion_maxima">Tu repetición máxima</string>
+    <string name="porcentages_de_rm">% Porcentajes de repetición máxima</string>
+    <string name="configuracion">Configuración</string>
     <string name="tipo_de_unidad">Selecciona el tipo de unidad a utilizar:</string>
     <string name="kilogramos">Kilogramos</string>
     <string name="libras">Libras</string>

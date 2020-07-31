@@ -24,4 +24,5 @@
     <string name="debes_calcular_rm">" \"You must first calculate your 1 RM !!!\""</string>
     <string name="del_1_rm">of 1 RM =</string>
     <string name="description_app">"Calculate your maximum repetition so \nsimple and fast."</string>
+    <string name="reps_12">\"It is recommended that the number of repetitions be less than 12 \"</string>
 </resources>

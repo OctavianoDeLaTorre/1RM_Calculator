@@ -72,10 +72,10 @@ class HomeFragment : Fragment() {
                     getString(R.string.debes_ingresar_reps),
                     Toast.LENGTH_LONG
                 ).show()
-            } else if (reps.toInt() == 0) {
+            } else if (reps.toInt() > 12) {
                 Toast.makeText(
                     context,
-                    getString(R.string.debes_ingresar_reps),
+                    getString(R.string.reps_12),
                     Toast.LENGTH_LONG
                 ).show()
             } else {

@@ -25,4 +25,5 @@
     <string name="debes_ingresar_reps">\"Debes ingresar el numero de repeticiones y el peso levantado \"</string>
     <string name="debes_calcular_rm">\"Primero debes calcular tu 1 RM !!! \"</string>
     <string name="del_1_rm">del 1 RM =</string>
+    <string name="reps_12">\"It is recommended that the number of repetitions be less than 12 \"</string>
 </resources>

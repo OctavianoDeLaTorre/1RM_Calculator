@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private var sharedPref: SharedPreferences? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)

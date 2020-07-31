@@ -32,7 +32,6 @@ class HomeFragment : Fragment() {
     private lateinit var lblUnit1: TextView
     private lateinit var lblUnit2: TextView
 
-
     private var rm = 0.0
 
     override fun onCreateView(
@@ -65,7 +64,15 @@ class HomeFragment : Fragment() {
 
         fab = activity?.findViewById(R.id.fab)!!
         fab.setOnClickListener {
-            if (lblReps.text.isNullOrBlank() || lblWeight.text.isNullOrBlank()) {
+            val reps = lblReps.text.toString()
+            val weight = lblWeight.text.toString()
+            if (reps.isEmpty() || weight.isEmpty()) {
+                Toast.makeText(
+                    context,
+                    getString(R.string.debes_ingresar_reps),
+                    Toast.LENGTH_LONG
+                ).show()
+            } else if (reps.toInt() == 0) {
                 Toast.makeText(
                     context,
                     getString(R.string.debes_ingresar_reps),
